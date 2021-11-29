@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name        Folha de Sao Paulo Scrapper
+// @name        Folha de Sao Paulo Coluna Scrapper
 // @namespace   Violentmonkey Scripts
-// @match       *://(folha)/*
+// @match       https://www1.folha.uol.com.br/colunas/*
 // @grant       none
 // @version     1.0
 // @author      ggarber

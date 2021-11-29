@@ -20,7 +20,7 @@ const article = paragraphs.reduce((acc, curr) => {
      if(currClasses.some(currClass => banned_classes.includes(currClass))){
           return acc += ''
      }     
-     return acc += curr.textContent
+     return acc += `<p>${curr.textContent}<p>`
 }, 0)
 
 document.querySelector('body').innerHTML = article

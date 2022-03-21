@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Folha de Sao Paulo Coluna Scrapper
 // @namespace   Violentmonkey Scripts
-// @match       https://www1.folha.uol.com.br/colunas/*
+// @match       https://www1.folha.uol.com.br/*/*
 // @grant       none
 // @version     1.0
 // @author      ggarber
@@ -17,10 +17,12 @@ const banned_classes = [
 const paragraphs = Array.from(document.querySelectorAll('.c-news__content p'))
 const article = paragraphs.reduce((acc, curr) => { 
      const currClasses = Array.from(curr.classList)
-     if(currClasses.some(currClass => banned_classes.includes(currClass))){
-          return acc += ''
+     if(!currClasses.some(currClass => banned_classes.includes(currClass))){
+          acc += `<p>${curr.textContent}<p>`
      }     
-     return acc += `<p>${curr.textContent}<p>`
-}, 0)
+     return acc
+}, '')
 
-document.querySelector('body').innerHTML = article
+const newTab = window.open('','_blank')
+newTab.document.write(article)
+newTab.focus()
